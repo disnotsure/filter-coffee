@@ -1,0 +1,19 @@
+{
+  "coffee": [
+    { "name": "House Filter", "note": "decoction, frothed milk, steel tumbler", "price": 90 },
+    { "name": "Black Decoction", "note": "no milk, no sugar, all coffee", "price": 80 },
+    { "name": "Cold Brew Kumbakonam", "note": "18-hour steep, jaggery syrup", "price": 140 },
+    { "name": "Espresso", "note": "single origin, changes monthly", "price": 110 },
+    { "name": "Flat White", "note": "double shot, microfoam", "price": 160 }
+  ],
+  "bakes": [
+    { "name": "Banana Chocolate Loaf", "note": "baked daily, 7am", "price": 120 },
+    { "name": "Ragi Cookies", "note": "finger millet, jaggery, sea salt", "price": 60 },
+    { "name": "Butter Croissant", "note": "laminated in-house", "price": 130 }
+  ],
+  "light_meals": [
+    { "name": "Podi Idli Toast", "note": "sourdough, gunpowder butter, idli", "price": 180 },
+    { "name": "Egg Bhurji Bun", "note": "soft bun, Bangalore-style bhurji", "price": 160 },
+    { "name": "Filter Coffee Tiramisu", "note": "decoction-soaked, mascarpone", "price": 190 }
+  ]
+}
