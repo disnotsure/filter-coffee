@@ -1,26 +1,77 @@
-# FILTER Coffeehouse — College Project
+# FILTER Coffeehouse
 
-A small full-stack website for a fictional Bangalore coffeehouse called
-**FILTER**. Built with plain HTML/CSS/JS on the frontend and a small
-Node.js + Express backend.
+## About the project
 
-## What it demonstrates
+FILTER is a full-stack website built for a fictional coffeehouse based in
+Indiranagar, Bangalore. The goal of the project was to design and build a
+complete website with both a working frontend and a working backend,
+rather than a static page — the site actually loads its menu from a
+server and lets visitors submit table reservations that get saved.
 
-- **Frontend:** semantic HTML, custom CSS (no framework), a responsive
-  layout, and JavaScript that talks to a real backend.
-- **Backend:** an Express server with two small JSON APIs:
-  - `GET /api/menu` — reads `data/menu.json` and returns the menu. The
-    homepage fetches this on load and builds the menu section from it.
-  - `GET /api/reservations` — lists saved reservations.
-  - `POST /api/reservations` — saves a new table reservation to
-    `data/reservations.json`.
-- **Data persistence:** reservations are written to a JSON file on disk,
-  so they survive a server restart (no database needed for a class
-  project, but easy to swap in one later).
+The project covers the core layers of a modern web application:
 
-## How to run it
+- A responsive, custom-designed frontend built with plain HTML, CSS, and
+  JavaScript (no frameworks or templates used).
+- A backend server built with Node.js and Express that serves the
+  website and exposes a small API.
+- A simple data storage layer using JSON files, so data (the menu and
+  reservations) is separate from the code and can be updated without
+  touching it.
 
-You need [Node.js](https://nodejs.org) installed (v16 or later is fine).
+## Features
+
+- **Home page** with a hero section, the restaurant's story, a menu
+  section, location and hours, and a reservation form.
+- **Dynamic menu:** the menu shown on the page is not hardcoded into the
+  HTML. It is fetched from the backend using JavaScript's `fetch()` API
+  when the page loads, and rendered into the page dynamically.
+- **Reservation system:** visitors can fill out a form (name, phone,
+  date, time, number of guests) to book a table. Submitting the form
+  sends the data to the backend, which validates it and saves it.
+- **Responsive design:** the layout adapts to mobile, tablet, and
+  desktop screen sizes.
+
+## Tech stack
+
+| Layer         | Technology                          |
+|---------------|--------------------------------------|
+| Frontend      | HTML5, CSS3, vanilla JavaScript      |
+| Backend       | Node.js, Express.js                  |
+| Data storage  | JSON files                           |
+| Deployment    | Vercel                               |
+
+## How the frontend and backend communicate
+
+The frontend and backend communicate over HTTP using a small REST API:
+
+| Method | Route                | Description                            |
+|--------|------------------------|------------------------------------------|
+| GET    | `/api/menu`            | Returns the full menu as JSON            |
+| GET    | `/api/reservations`    | Returns all saved reservations           |
+| POST   | `/api/reservations`    | Accepts and saves a new table reservation|
+
+When the page loads, the frontend calls `GET /api/menu` and builds the
+menu section from the response. When the reservation form is submitted,
+the frontend calls `POST /api/reservations` with the form data, and the
+backend appends it to `data/reservations.json`.
+
+## Project structure
+filter-coffee/
+├── server.js # Express backend and API routes (used when running locally)
+├── api/index.js # Serverless version of the backend (used on Vercel)
+├── vercel.json # Deployment configuration for Vercel
+├── package.json
+├── data/
+│ ├── menu.json # Menu content
+│ └── reservations.json # Reservations saved by the backend
+└── public/ # Frontend files served to the browser
+├── index.html
+├── css/style.css
+└── js/main.js
+
+## How to run it locally
+
+Requires [Node.js](https://nodejs.org) (v16 or later).
 
 ```bash
 cd filter-coffee
@@ -28,26 +79,14 @@ npm install
 npm start
 ```
 
-Then open **http://localhost:3000** in your browser.
+Then open **http://localhost:3000** in a browser.
 
-## Project structure
+## Deployment
 
-```
-filter-coffee/
-├── server.js              # Express backend + API routes
-├── package.json
-├── data/
-│   ├── menu.json           # menu content, editable without touching code
-│   └── reservations.json   # reservations get appended here at runtime
-└── public/                 # everything the browser loads
-    ├── index.html
-    ├── css/style.css
-    └── js/main.js
-```
-
-## Ideas for extending it (good talking points if asked in a viva)
-
-- Swap `data/*.json` for a real database (SQLite is a light next step).
-- Add basic auth to `/api/reservations` (GET) so only staff can view bookings.
-- Add form validation messages per field instead of one status line.
-- Add an admin page that reads `GET /api/reservations` and renders a table.
+The project is deployed on Vercel. Since Vercel runs backend code as
+serverless functions rather than a continuously running server, a
+separate backend file (`api/index.js`) is used for the deployed version,
+while `server.js` is used for running it locally. Note that on the
+deployed version, reservations are stored temporarily rather than
+permanently, since serverless functions do not have persistent file
+storage — locally, they are saved permanently.
