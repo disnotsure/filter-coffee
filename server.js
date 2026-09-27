@@ -1,8 +1,3 @@
-// FILTER Coffeehouse — simple Express backend
-// Serves the static frontend and two small JSON APIs:
-//   GET  /api/menu        -> returns the menu (read from data/menu.json)
-//   POST /api/reservations -> saves a table reservation (appends to data/reservations.json)
-//   GET  /api/reservations -> lists saved reservations (handy for demoing to a professor)
 
 const express = require("express");
 const path = require("path");
@@ -17,7 +12,7 @@ const RESERVATIONS_PATH = path.join(__dirname, "data", "reservations.json");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Helpers
+
 function readJSON(filePath) {
   const raw = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(raw);
@@ -26,7 +21,7 @@ function writeJSON(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 }
 
-// GET the menu
+
 app.get("/api/menu", (req, res) => {
   try {
     const menu = readJSON(MENU_PATH);
@@ -36,7 +31,7 @@ app.get("/api/menu", (req, res) => {
   }
 });
 
-// GET all reservations (for the professor / demo)
+
 app.get("/api/reservations", (req, res) => {
   try {
     const reservations = readJSON(RESERVATIONS_PATH);
@@ -46,7 +41,6 @@ app.get("/api/reservations", (req, res) => {
   }
 });
 
-// POST a new reservation
 app.post("/api/reservations", (req, res) => {
   const { name, phone, date, time, guests } = req.body;
 
