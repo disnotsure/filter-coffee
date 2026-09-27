@@ -1,5 +1,4 @@
-// FILTER Coffeehouse — frontend logic
-// Talks to the Express backend at /api/menu and /api/reservations
+
 
 document.addEventListener("DOMContentLoaded", () => {
   loadMenu();
@@ -7,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupReserveForm();
 });
 
-// ---------- Mobile nav ----------
+
 function setupNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.querySelector(".main-nav");
@@ -26,7 +25,6 @@ function setupNav() {
   });
 }
 
-// ---------- Menu, loaded from the backend ----------
 async function loadMenu() {
   const container = document.getElementById("menuGroups");
   const groupLabels = {
@@ -78,7 +76,7 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
-// ---------- Reservation form ----------
+
 function setupReserveForm() {
   const form = document.getElementById("reserveForm");
   const status = document.getElementById("formStatus");
