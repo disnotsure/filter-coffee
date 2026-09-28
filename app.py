@@ -1,11 +1,3 @@
-# FILTER Coffeehouse - Flask backend with SQLite database
-#
-# Routes:
-#   GET  /api/menu          -> menu grouped by category (from the menu_items table)
-#   GET  /api/reservations  -> all reservations (from the reservations table)
-#   POST /api/reservations  -> insert a new reservation
-#
-# Also serves the frontend files from the public/ folder.
 
 import json
 import os
@@ -18,14 +10,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
 MENU_JSON = os.path.join(BASE_DIR, "data", "menu.json")
 
-# On Vercel the project folder is read-only, only /tmp is writable
+
 if os.environ.get("VERCEL"):
     DB_PATH = "/tmp/filter.db"
 else:
     DB_PATH = os.path.join(BASE_DIR, "filter.db")
 
 app = Flask(__name__, static_folder=None)
-app.json.sort_keys = False  # keep menu categories in insertion order (coffee first)
+app.json.sort_keys = False  
 
 
 def get_db():
@@ -75,7 +67,7 @@ def init_db():
 init_db()
 
 
-# ---------- API routes ----------
+
 
 @app.route("/api/menu")
 def get_menu():
@@ -125,7 +117,7 @@ def create_reservation():
     return jsonify({"message": "Reservation confirmed.", "id": new_id}), 201
 
 
-# ---------- Frontend ----------
+
 
 @app.route("/")
 def home():
