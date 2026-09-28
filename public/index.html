@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FILTER — Coffeehouse, Indiranagar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="wordmark">FILTER</a>
+      <nav class="main-nav">
+        <a href="#story">Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="#reserve" class="nav-cta">Reserve a table</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Indiranagar, Bangalore · Since 2019</p>
+          <h1 class="hero-title">Filter coffee,<br>reconsidered.</h1>
+          <p class="hero-sub">
+            We took the steel tumbler and dabara our grandparents swore by,
+            and put it next to an espresso machine. Both survived.
+          </p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">See the menu</a>
+            <a href="#reserve" class="btn btn-ghost">Reserve a table</a>
+          </div>
+        </div>
+        <div class="hero-figure" aria-hidden="true">
+          <div class="pour-graphic">
+            <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="120" cy="290" rx="70" ry="16" class="pour-shadow" />
+              <path d="M60 60 C60 40 80 30 120 30 C160 30 180 40 180 60 L172 190 C170 210 150 225 120 225 C90 225 70 210 68 190 Z" class="pour-cup" />
+              <path d="M170 90 C205 90 210 130 175 138" class="pour-handle" />
+              <path d="M78 60 C78 150 98 200 120 205 C142 200 162 150 162 60" class="pour-liquid" />
+              <ellipse cx="120" cy="60" rx="42" ry="10" class="pour-rim" />
+            </svg>
+          </div>
+          <p class="hero-figure-caption">Dabara &amp; tumbler, our house pour</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story">
+      <div class="wrap story-inner">
+        <h2 class="story-heading">A filter coffee shop that doesn't apologize for either word.</h2>
+        <div class="story-columns">
+          <p>
+            FILTER opened on a side street off 100 Feet Road with one espresso machine,
+            one steel filter set, and a bet that Bangalore didn't need to choose between
+            them. Five years on, that's still the whole idea.
+          </p>
+          <p>
+            Our decoction is brewed the traditional way, every morning, by the same two
+            people who started with us. The espresso beans rotate monthly, sourced from
+            farms in Chikmagalur and Coorg. Everything on the menu is built to go with
+            either cup.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+      <div class="wrap">
+        <h2 class="section-heading">Menu</h2>
+        <p class="section-sub">Loaded fresh from the kitchen system. Prices in ₹.</p>
+
+        <div class="menu-groups" id="menuGroups">
+          <!-- Filled by JS from /api/menu; fallback content sits here until then -->
+          <p class="menu-loading">Loading today's menu…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit">
+      <div class="wrap visit-inner">
+        <div>
+          <h2 class="section-heading">Visit</h2>
+          <address class="visit-address">
+            14, 2nd Cross, Indiranagar<br>
+            Bangalore 560038
+          </address>
+          <p class="visit-phone">+91 80 4611 2299</p>
+        </div>
+        <table class="hours-table">
+          <tbody>
+            <tr><th>Mon – Fri</th><td>7:30 am – 9:30 pm</td></tr>
+            <tr><th>Saturday</th><td>7:30 am – 10:30 pm</td></tr>
+            <tr><th>Sunday</th><td>8:00 am – 9:00 pm</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RESERVE -->
+    <section class="reserve" id="reserve">
+      <div class="wrap reserve-inner">
+        <div class="reserve-copy">
+          <h2 class="section-heading">Reserve a table</h2>
+          <p class="section-sub">
+            We hold tables for fifteen minutes past booking time. Groups of eight or
+            more, call us directly.
+          </p>
+        </div>
+
+        <form id="reserveForm" class="reserve-form" novalidate>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <div class="form-row form-row-split">
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div>
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="" disabled selected>Select</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary reserve-submit">Confirm reservation</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>FILTER Coffeehouse, Indiranagar</span>
+      <span>&copy; 2026. Made for a college project.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
